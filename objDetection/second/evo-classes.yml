@@ -1,0 +1,8 @@
+path: C:\Users\aca18\Documents\evolve\objDetection\second\Data\
+train: images\train
+val: images\validation
+test: # optional
+
+names:
+    0: BOTTLE
+    1: CAN

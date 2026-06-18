@@ -1,0 +1,112 @@
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <img id='imgBtl' width="3084px" height="4096px" src="Data/images/validation/90.jpeg" style="display:none">
+        <!-- <img class='img' src="<?=$imgPth?>" alt="" width="<?=$widthImg?>px" height="<?=$heightImg?>px"/> -->
+        <canvas id="gameCanvas" width="3084px" height="4096px">Your browser does not support the HTML5 canvas tag.</canvas>
+        <br>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+
+    const canvord = [];
+    const canvas=document.getElementById("gameCanvas");
+        // cord[as=document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const imgc = document.getElementById('imgBtl');
+
+    ctx.drawImage(imgc, 0, 0);
+    wi = 3084
+    he = 4096
+
+    ctx.beginPath();
+    ctx.lineWidth = "1";
+    ctx.strokeStyle = "red";
+    
+    const reqResp = [
+        {cord_bottom:2027, cord_left:1875, cord_right:2401, cord_top:178},
+        
+        {cord_bottom:4073, cord_left:440, cord_right:883, cord_top:2543},
+        {cord_bottom:4067, cord_left:857, cord_right:1290, cord_top:2538},
+        {cord_bottom:4055, cord_left:2223, cord_right:2630, cord_top:2531},
+        {cord_bottom:2070, cord_left:809, cord_right:1330, cord_top:0},
+
+        {cord_bottom:4070, cord_left:1790, cord_right:2211, cord_top:2505},
+        {cord_bottom:4081, cord_left:1307, cord_right:1736, cord_top:2492},
+        {cord_bottom:2016, cord_left:1324, cord_right:1844, cord_top:283},
+        {cord_bottom:2060, cord_left:215, cord_right:838, cord_top:296},
+        {cord_bottom:2027, cord_left:2431, cord_right:2927, cord_top:359},
+    ];
+
+    reqResp.forEach(function(coord) {
+        // console.log(coord);
+        
+        // x = 1324 //cord_left
+        // y = 283 //cord_top
+        // width = 1844 - 1324 //cord_right - cord_left
+        // height = 2016 - 283 //cord_bottom - cord_top
+        let cord = [];
+        cord['x'] = coord['cord_left'];
+        cord['y'] = coord['cord_top'];
+        cord['width'] = coord['cord_right'] - coord['cord_left'];
+        cord['height'] = coord['cord_bottom'] - coord['cord_top'];
+
+        // ctx.rect(cord['x'], cord['y'], cord['width'], cord['height']);
+        yolo_x = cord['x'] + (cord['width'] / 2);
+        yolo_y = cord['y'] + (cord['height'] / 2);
+        ctx.rect(yolo_x, yolo_y, cord['width'], cord['height']);
+
+        // 3084
+        // 4096
+        console.log(yolo_x / 3084)
+        console.log(yolo_y / 4096)
+        console.log(cord['width'] / 3084)
+        console.log(cord['height'] / 4096)
+        console.log('***********************')
+        ctx.font = "10px serif bold";
+        ctx.fillStyle = "red";
+        ctx.fillText('bottle', yolo_x, yolo_y);
+    });
+
+    ctx.stroke();
+    
+
+
+
+
+    // {cord_bottom:2016, cord_left:1324, cord_right:1844, cord_top:283},
+    // {cord_bottom:2070, cord_left:809, cord_right:1330, cord_top:0},
+
+    // x = 1324 //cord_left
+    // y = 283 //cord_top
+    // width = 1844 - 1324 //cord_right - cord_left
+    // height = 2016 - 283 //cord_bottom - cord_top
+
+    // x = 1875 //cord_left
+    // y = 178 //cord_top
+    // width = 2401 - 1875 //cord_right - cord_left
+    // height = 2027 - 178 //cord_bottom - cord_top
+
+    // x = 809 //cord_left
+    // y = 0 //cord_top
+    // width = 1330 - 809 //cord_right - cord_left 521
+    // height = 2070 - 0 //cord_bottom - cord_top  2070
+
+    // yolo_x = x + (width / 2) // 260.5
+    // yolo_y = y + (height / 2) // 1035
+    // ctx.rect(yolo_x, yolo_y, width, height);
+    // ctx.stroke();
+
+}
+</script>
+
+</body>
